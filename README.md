@@ -6,7 +6,7 @@ Velocyto (https://velocyto.org/) is a powerful tool for studying dynamic gene ex
 
 Seurat (https://satijalab.org/seurat/) is a powerful and widely-used R-based backaged for processing, analyzing, and visualizing scRNA seq data. In principle, interoperability exists between Seurat and Loom files. Seurocity also has powerful tools for integrating multiple datasets (https://satijalab.org/seurat/v3.0/integration.html). Further, there is an R-based Seurat wrapper for RNA velocity estimation using Velocyto outpute (https://htmlpreview.github.io/?https://github.com/satijalab/seurat.wrappers/blob/master/docs/velocity.html). 
 
-It is my opinion that Python-based scVelo is more efficient and user-friendly for velocity analysis, while I prefer Seurat's integration tools. **Seurocity** was created to permit easy initial processing, filtering, analysis, clustering, etc in Seurocty, followed by porting of dimensionality reductions and clustering to scVelo for velocity analysis.
+It is my opinion that Python-based scVelo is more efficient and user-friendly for velocity analysis, while I prefer Seurat's integration tools. **Seurocity** was created to permit easy initial processing, filtering, analysis, clustering, etc in Seurat, followed by porting of retained cells, dimensionality reductions, and clustering to scVelo for velocity analysis.
 
 ### Usage information
     Distributed under MIT license without warranty
