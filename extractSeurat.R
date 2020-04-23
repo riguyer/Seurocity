@@ -33,7 +33,7 @@ suppressMessages(library(stringr))
 suppressMessages(library(matrixStats))
 
 # define local functions
-#		mutate cell_ID metadata category as needed
+#	mutate cell_ID metadata category as needed
 MutateCellID <- function(seurat_obj, prefix, postfix, pattern) {
 	if (! is.null(prefix) | prefix == "") {
 		seurat_obj[["cell_ID"]] <- sapply(seurat_obj[["cell_ID"]], function(x) paste0(prefix,x))
