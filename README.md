@@ -54,3 +54,23 @@ It is my opinion that Python-based scVelo is more efficient and user-friendly fo
         the directories do exist they will be used. However, be aware 
         existing files will be overwritten if they have names matching 
         the output format.
+
+### Development information
+    (c) Richard A. Guyer, MD, PhD April 1, 2020
+    MGH Pediatric Surgical Research Laboratories
+    PI: Allan Goldstein, MD
+    riguyer@gmail.com rguyer@partners.org
+    
+    Created on Wed Apr 1 20:45:00 2020
+    Last modified: Wed Apr 15 12:53:38 2020
+    Built and tested in Python 3.7.3 on MacBook Air with:
+       8 GB 1600 MHz DDR3
+       2.2 GHz Intel Core i7
+    Using Spyder 4.0.1 development environment (Python code) and Atom 1.45.0 text editor (R code)
+    
+    R script built and tested in R 3.6.1
+        R packages used:
+            stringr 1.4.0 
+            dplyr 0.8.3  
+            Seurat 3.1.2
+
