@@ -21,7 +21,7 @@ It is my opinion that Python-based scVelo is more efficient and user-friendly fo
         -w working_dir : str
             path to working directory, optional, default is ./
         -i input_file : str
-            name of input rds file, default is 
+            name of input rds file, default is input.rds
     
     Expected input file structure in working directory:
         
