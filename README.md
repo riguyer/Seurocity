@@ -9,3 +9,48 @@ Seurat (https://satijalab.org/seurat/) is a powerful and widely-used R-based bac
 It is my opinion that Python-based scVelo is more efficient and user-friendly for velocity analysis, while I prefer Seurat's integration tools. **Seurocity** was created to permit easy initial processing, filtering, analysis, clustering, etc in Seurocty, followed by porting of dimensionality reductions and clustering to scVelo for velocity analysis.
 
 ### Usage information
+    Distributed under MIT license without warranty
+    
+    Usage: python Seurocity.py [Options]
+    
+    Options: 
+        -h display this help message
+        -l display license
+        -r rscript_dir : str
+             path to Rscript instance to use, optional
+        -w working_dir : str
+            path to working directory, optional, default is ./
+        -i input_file : str
+            name of input rds file, default is 
+    
+    Expected input file structure in working directory:
+        
+    .
+    ├─── inputs
+    |    ├── idents.txt ; file with sample IDs
+    |    ├── append.txt ; file with information for porting cell IDs
+    |    ├── reductions.txt ; file with reductions to port from Seurat
+    |    ├── input.rds ; rds-formatted file with saved Seurat object
+    |    └── SAMPLE-ID.loom ; Velocyto-output loom (one for each sample)
+    └─── extractSeurat.R
+        
+    The program will fail if these input files are not provided with 
+        the indicated names and locations
+        
+    Outputs will be generated with the following structure inside the working directory:
+        
+    .
+    └─── outputs
+         ├── seurat_dat 
+         |   ├── seur_pca_loadings.csv
+         |   ├── seur_pca_var.csv 
+         |   └── SAMPLE-ID_seur_REDUCTION_emb.csv ; multiple
+         ├── proc_loom 
+         |   └── SAMPLE-ID_proc.loom ; one for each sample
+         └── comb_loom
+             └── combined.loom ; a single loom file 
+    
+    If these output directories do not exist they will be created. If 
+        the directories do exist they will be used. However, be aware 
+        existing files will be overwritten if they have names matching 
+        the output format.
