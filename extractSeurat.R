@@ -4,27 +4,27 @@
 #		of Seurat processing to analysus using these alternate packages.
 #
 # Inputs: 	- rds file containing a Seurat objects
-#						- idents.txt, a txt file containing entries in the "orig.ident" metadata
-#							category to extract iformation (extracts for all if file is empty).
-#							Values should be separated by commas with no spaces.
-#						- reductions.txt, a txt file containing reductions to export. values
-#							should be separated by commas with no spaces.
-#						- append.txt, a txt file containing strings to append to unique cell
-#							barcodes for each orig.ident group, in same order as orig.idents
-#							are in idents.csv. Values should be separated by commas with no spaces.
-#								# First row: prefix before barcode ("" or NULL if none)
-#								# second row: postfix after barcode ("" or NULL if none)
-#								# third row: single value, regex pattern to replace at end of barcode ("" or NULL if none)
+#		- idents.txt, a txt file containing entries in the "orig.ident" metadata
+#			category to extract iformation (extracts for all if file is empty).
+#			Values should be separated by commas with no spaces.
+#		- reductions.txt, a txt file containing reductions to export. values
+#			should be separated by commas with no spaces.
+#		- append.txt, a txt file containing strings to append to unique cell
+#			barcodes for each orig.ident group, in same order as orig.idents
+#			are in idents.csv. Values should be separated by commas with no spaces.
+#				# First row: prefix before barcode ("" or NULL if none)
+#				# second row: postfix after barcode ("" or NULL if none)
+#				# third row: single value, regex pattern to replace at end of barcode ("" or NULL if none)
 #
 #	Usage: Rscript extractSeurat.R [rds file] [idents.txt] [append.txt]
 #
-# This code (c) Richard A. Guyer, MD, PhD April 10, 2020
+# 	This code (c) Richard A. Guyer, MD, PhD April 10, 2020
 #
-# Last updated: April 17, 2020 by Richard A. Guyer
+# 	Last updated: April 17, 2020 by Richard A. Guyer
 #
-# MGH Pediatric Surgical Research Laboratories
-# PI: Allan Goldstein, MD
-# riguyer@gmail.com rguyer@partners.org
+# 	MGH Pediatric Surgical Research Laboratories
+# 	PI: Allan Goldstein, MD
+# 	riguyer@gmail.com rguyer@partners.org
 
 # load required libraries
 suppressMessages(library(Seurat))
@@ -48,7 +48,7 @@ MutateCellID <- function(seurat_obj, prefix, postfix, pattern) {
 	return(seurat_obj)
 }
 
-#		export embeddings for a given dimensionality reduction
+#	export embeddings for a given dimensionality reduction
 ExportEmbeddings <- function(seurat_obj, ident, reductions, row_names) {
 	cat("Exporting dimenstionality reductions\n")
 	for (r in reductions) {
@@ -62,7 +62,7 @@ ExportEmbeddings <- function(seurat_obj, ident, reductions, row_names) {
 	}
 }
 
-#		export cluster identities
+#	export cluster identities
 ExportClusters <- function(seurat_obj, ident, row_names) {
 	cat("Exporting Seurat cluster identities\n")
 	export_file <- paste0("./outputs/seurat_dat/",ident,"_seur_clust.csv")
@@ -72,7 +72,7 @@ ExportClusters <- function(seurat_obj, ident, row_names) {
 	cat(paste0("Saved as: ",export_file,"\n"))
 }
 
-#		export PCA loadings and variance data
+#	export PCA loadings and variance data
 ExportPCA <- function(seurat_obj) {
 	cat("\nExporting PCA loadings and variance information\n")
 	write.csv(seurat_obj[['pca']]@feature.loadings, file = "./outputs/seurat_dat/seur_pca_loadings.csv")
@@ -159,8 +159,8 @@ Idents(cells) <- "orig.ident"
 curr_index <- 1
 for (i in idents) {
 	# subset seurat object by identity, mutate cell IDs as needed for use with
-	#		Velocyto output, and extract reduced dimension embeddings and Seurat cluster
-	#		identities for cells
+	#	Velocyto output, and extract reduced dimension embeddings and Seurat cluster
+	#	identities for cells
 	cat(paste0("**Subsetting out sample ",i," for export**\n"))
 	curr_subset <- subset(cells, ident = i)
 	curr_subset[["cell_ID"]] <- Cells(curr_subset)
@@ -170,7 +170,7 @@ for (i in idents) {
 	ExportClusters(curr_subset, i, curr_rownames)
 
 	# extract PCA loadings, variance, and variance ratio. These will be the same
-	#		for all samples, so this only needs to be done once.
+	#	for all samples, so this only needs to be done once.
 	if (curr_index == 1) {
 		# get and export loadings
 		ExportPCA(curr_subset)
