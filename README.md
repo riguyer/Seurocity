@@ -1,4 +1,4 @@
-# Seurocity v1.0.0
+# Seurocity v0.1.0
 *Easy velocity analysis using scVelo with data preprocessed in Seurat*
 
 ### Background
